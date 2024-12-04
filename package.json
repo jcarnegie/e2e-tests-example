@@ -1,5 +1,5 @@
 {
-  "name": "tests-example",
+  "name": "e2e-tests-example",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -9,6 +9,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
+    "build:android": "eas build --platform android --profile development --local --output ./tmp/android.apk",
+    "maestro:android": "yarn run emulator:stop; sleep 2; yarn run emulator:start; sleep 5 && adb install ./tmp/android.apk && maestro test ./maestro && yarn run emulator:stop",
+    "emulator:start": "emulator -avd Pixel_7 &",
+    "emulator:stop": "adb -s emulator-5554 emu kill",
     "lint": "expo lint"
   },
   "jest": {
@@ -50,5 +54,6 @@
     "react-test-renderer": "18.3.1",
     "typescript": "^5.3.3"
   },
-  "private": true
+  "private": true,
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

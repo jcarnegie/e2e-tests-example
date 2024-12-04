@@ -1,0 +1,4 @@
+appId: com.jcarnegie.testsexample
+---
+- launchApp
+- assertVisible: 'Welcome!'

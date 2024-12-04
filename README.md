@@ -1,50 +1,44 @@
-# Welcome to your Expo app 👋
+# Expo E2E Testing with Maestron
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Notes
 
-## Get started
+This uses EAS to build the app locally. You'll have to create an account at expo.dev to run the build.
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+1. Go to [https://expo.dev/signup](https://expo.dev/signup)
+2. Sign up
+3. From the command line, run:
 
 ```bash
-npm run reset-project
+npm install -g eas-cli
+# login with the credentials you used to sign up
+eas login
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Setup
 
-## Learn more
+```bash
+# install dependencies
+yarn install
 
-To learn more about developing your project with Expo, look at the following resources:
+# setup android sdk (assumes homebrew is installed running on a mac with zsh as your shell)
+./android-sdk.sh
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+# install maestro
+curl -fsSL "https://get.maestro.mobile.dev" | bash
+```
 
-## Join the community
+## Build Android APK
 
-Join our community of developers creating universal apps.
+```bash
+yarn build:android
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This places the APK in the `tmp` directory.
+
+## Run E2E Tests
+
+```bash
+yarn maestro:android
+```
+
+See package.json scripts section and the maestro directory for more details.
