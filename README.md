@@ -1,4 +1,4 @@
-# Expo E2E Testing with Maestron
+# Expo E2E Testing with Maestro
 
 ## Notes
 
